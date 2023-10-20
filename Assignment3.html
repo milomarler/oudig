@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 3</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: url('Background_landingpage.jpg') center center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+.header a {
+  display: block;
+  height: 100%; /* Ensure the anchor fills the entire header */
+  width: 100%;
+  text-decoration: none; /* Remove underline on the anchor text */
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #fdd835;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  display: flex; /* Center the navigation links horizontally */
+  justify-content: center; /* Center the links horizontally */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ffeb3b;
+  color: white;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #fbc02d;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  margin: 0 150px; /* Add margin to the left and right sides */
+}
+
+/* Fake image, just for this example */
+.full-width-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-width-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.code-container {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Background color for the code block */
+    border-radius: 10px; /* Rounded corners */
+    width: 100%; /* Full width of the webpage */
+    overflow-x: auto; /* Enable horizontal scroll bar */
+}
+    
+/* Footer */
+.footer {
+  padding: 1.5px; /* Decrease the padding to make it smaller */
+  text-align: center;
+  background-color: #fdd835;
+  color: white;
+  font-size: 7px; /* Decrease the font size to make it smaller */
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html">
+  <h1>Amsterdam Paralympics 2024</h1>
+ <p>DATA 1 assignments conceived and developed by <b>Group 12</b>.</p>
+</div>
+
+<div class="navbar">
+  <a href="AboutUs.html">About Us</a>
+  <a href="Assignment1.html">Assignment 1</a>
+  <a href="Assignment2.html">Assignment 2</a>
+  <a href="Assignment3.html"class="active"><b>Assignment 3</b></a>
+  <a href="Assignment4.html">Assignment 4</a>
+</div>
+
+<div class="row">
+  <div class="main">
+  <h1>Housing</h1>
+  <h2>Municipal Brief</h2>
+  <p><i>The Municipality of Amsterdam is in a love hate relationship with AirBnb, see for example this and this article. Amsterdam wants to get a bit of insight in the number of tourists that will make use of AirBnB. </i></p>
+  <br>
+  <h2>Tourist tax income</h2>
+  <p>To calculate the tax income that Amsterdam will receive if the event lasts for a week and attracts 30,000 visitors, we need to ascertain the average costs of various types of accommodations: hotel rooms, and AirBnB’s. The municipality of Amsterdam 2023) states that the tourist tax for hotel stays amounts to 7% of the turnover, in addition to a fixed fee of 3 euros per day. For holiday rentals, bed & breakfasts, and short-stay accommodations, the tax rate is set at 10% of the turnover. According to data from Business Insider, the average hotel price is approximately 125 Euros. Meanwhile, the average cost of an Airbnb, such as a one-bedroom apartment, is roughly 160 Euros (Verstegen, 2019). To estimate the overall tax income, you can apply these average accommodation costs to the number of visitors and the tax rates mentioned.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.1
+
+  #Variables
+  hotel_price = 125
+  airbnb_price = 160
+  nights = 6
+  tourists = 30000
+
+  #calculation touristtax
+  tax_hotel = (0.07 * hotel_price + 3) * nights * tourists
+  tax_airbnb = (0.1 * airbnb_price) * nights * tourists
+
+  print("The tourist tax for hotels will be", format(tax_hotel,'.2f'))
+  print("The tourist tax for AirBnB's will be", format(tax_airbnb,'.2f'))
+  </code></pre></div>
+  <p>The revenue from tourist tax varies depending on the type of accommodation. Airbnb contributes approximately 2.9 million euros, whereas hotels generate around 2.1 million euros.</p>
+  <br>
+  <h2>AirBNB locations per neighbourhood</h2>
+  <p>Using python a script is made that extracts Airbnb data from a CSV file, and visualizes the distribution of listings among neighborhoods. Evidently, the analysis underscores the prominence of the "De Baarsjes - Oud West" neighborhood as the predominant hub for Airbnb accommodations.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.2
+
+  import pandas as pd
+  import matplotlib.pyplot as plt
+
+  # I loaded the data from the CSV file into the dataframe
+  # To make a list with the data I then chose the neighbourhood_cleansed column
+  # I defined the number of bins for the graph
+  df = pd.read_csv("C:/Users/yanni/OneDrive/Documenten/MADE_Data 1/Week 4_listings_GEBRUIK DEZE.csv.gz")
+  data_points = df['neighbourhood_cleansed'].tolist()
+  n_bins = 21
+
+  # And created a new figure and axis for the graph
+  fig, ax = plt.subplots()
+
+  # I made a plot of the data points with specified number of bins, then I used 'ec' to make the edges of the bars white
+  ax.hist(data_points, ec='white', bins=n_bins)
+
+  # To improve the readability I rotated the labels
+  plt.xticks(rotation=90)
+
+  rects = ax.patches
+
+  # I set the title for the graph and plotted it
+  plt.title('AirBnB Locations per Neighbourhood')
+  plt.show()
+  </code></pre></div>
+  <br>
+  <img src="Housing_1.png" alt="AirBnB Locations per Neighbourhood" class="full-width-image">
+  <br>
+  <h2>The street with the most Airbnb's</h2>
+  <p>To ascertain what street with the highest concentration of Airbnb listings, all Airbnb coordinates have been plotted on the city map of Amsterdam.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.3 (new using Folium)
+
+  import pandas as pd
+  import folium
+
+  # I loaded the data from the CSV file into the dataframe
+  df = pd.read_csv("C:/Users/yanni/OneDrive/Documenten/MADE_Data 1/Week 4_listings_GEBRUIK DEZE.csv.gz")
+
+  # I counted the frequency of each pair of coordinates
+  coordinate_counts = df.groupby(['latitude', 'longitude']).size().reset_index(name='Frequency')
+
+  # Then I created a Folium map
+  m = folium.Map(location=[df['latitude'].mean(), df['longitude'].mean()], zoom_start=12)
+
+  # I added markers to the map on all the locations where AirBnB's are found
+  for index, row in coordinate_counts.iterrows():
+      folium.Marker(
+          location=[row['latitude'], row['longitude']],
+          popup=f"Frequency: {row['Frequency']}",
+          fill=True,
+          fill_color='blue',
+      ).add_to(m)
+
+  #I plotted the map and saved it as an HTML file
+  m.save("coordinate_map.html")
+  m
+  </code></pre></div>
+  <br>
+  <img src="Housing_2.png" alt="AirBnB coordinates in Amsterdam" class="full-width-image">
+  <p>The generated map suffers from reduced clarity due to the high density of listings. Consequently, we've identified a predominant coordinate (52.3881, 4.91438) occurring 12 times, notably in the vicinity of Buiksloterweg.</p>
+  <div class="code-container"><pre><code class="python">
+  import pandas as pd
+  import folium
+
+  # I loaded the data from the CSV file into the dataframe
+  df = pd.read_csv("C:/Users/yanni/OneDrive/Documenten/MADE_Data 1/Week 4_listings_GEBRUIK DEZE.csv.gz")
+
+  # I counted the frequency of each pair of coordinates
+  coordinate_counts = df.groupby(['latitude', 'longitude']).size().reset_index(name='Frequency')
+
+  # Then I found the coordinate pair with the highest frequency
+  most_common_coordinate = coordinate_counts.sort_values(by='Frequency', ascending=False).iloc[0]
+
+  # I printed the info of the most common coordinate
+  print("Most Common Coordinate:")
+  print("latitude:", most_common_coordinate['latitude'])
+  print("longitude:", most_common_coordinate['longitude'])
+  print("Frequency:", most_common_coordinate['Frequency'])
+
+  # I created a map centered around the most common coordinate
+  map_center = [most_common_coordinate['latitude'], most_common_coordinate['longitude']]
+  m = folium.Map(location=map_center, zoom_start=15)
+
+  # And added a marker for the most common coordinate
+  folium.Marker(
+          location=map_center,
+          popup=f"Most Common Coordinate\nFrequency: {most_common_coordinate['Frequency']}",
+          fill=True,
+          fill_color='blue',
+      ).add_to(m)
+
+  # Then I saved the map as an HTML file
+  m.save("most_common_coordinate_map.html")
+
+  m
+  </code></pre></div>
+  <br>
+  <img src="Housing_3.png" alt="Most frequent AirBnB coordinate" class="full-width-image">
+  <br>
+  <h2>Indentifying Airbnb's as permanent housing</h2>
+  <p>Our initial examination revealed 36 Airbnb listings vacant for a full year, indicating a housing potential. Accurate estimation remains challenging due to data limitations. We also visualized Airbnb's availability patterns. Interestingly, a significant 20,000-unit disparity was observed between BBGA and Airbnb records, suggesting a portion of these listings may already be in use for housing.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.4
+  import pandas as pd
+
+  airbnb_data = pd.read_csv(r"C:\Users\inesv\Documents\MADE\data\airbnb\listings.csv")
+  woningenAMS = pd.read_csv(r"C:\Users\inesv\Documents\MADE\data\airbnb\BBGA1.csv", sep = ";")
+
+
+  #airbnb's that are available throughout the whole year, data from airbnbsite
+  data = airbnb_data.iloc[:,15]
+  allyear = data==365
+  print(sum(allyear))
+  #so there are 36 airbnb's available throughout the whole year but a lot are also available for most of the time. 
+
+  #creating bins steps of 10
+  bins = list(range(0, 366, 10))
+
+  #plotting data
+  plt.figure(figsize=(12, 6))
+  plt.hist(data, bins=[0, 5, 10, 20, 30, 40, 50, 60, 70, ..., 370], alpha=0.5, color='green', label='Original Data')
+
+  plt.xlabel('Days Available per Year')
+  plt.ylabel('Number of Airbnbs')
+  plt.title('Airbnbs Availability Distribution')
+  plt.legend()
+  plt.xticks(rotation=45, ha='right')  # Rotate the X-axis labels for readability
+  plt.show()
+  </code></pre></div>
+  <br>
+  <img src="Housing_4.jpeg" alt="AirBnB's Availability Distribution" class="full-width-image">
+  <br>
+  <h2>Determining the required number of hotel rooms</h2>
+  <p>The provided data indicates the expected number of tourists in 2023 and the corresponding hotel occupancy rate in Amsterdam. We extrapolated this hotel occupancy rate to Airbnb listings (an assumption). Subsequently, we calculated an additional 12,102 hotel rooms required, assuming an average of 2.5 people per room, to accommodate an extra 30,000 individuals. It's essential to note that the actual scenario might necessitate fewer rooms due to the availability of unoccupied Airbnb listings.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.5
+  import pandas as pd
+
+  #scenario
+  scenario = {
+      'tourists': 7400000,  # in 2023
+      'occupancyrate': 0.84,  # Occupancy rate for this scenario
+      'additionaltourists': 30000  # The additional tourists you want to accommodate (to be divided by 2.5)
+  }
+
+  # how many rooms are needed:
+  additionalhotelrooms = scenario['additionaltourists'] / (1 - (scenario['occupancyrate'] / 100))
+  additionalhotelrooms = round(additionalhotelrooms / 2.5)  # Split by 2.5
+
+  # result
+  print(f"Additional hotel rooms needed: {additionalhotelrooms}")
+  </code></pre></div>
+  <br>
+  <h2>Determining the amount of different licenses issued</h2>
+  <p>Within the Airbnb dataset, a 'listings' column was identified and tallied, with duplicate entries removed for analysis, resulting in a total of 7288 listings.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 3.5
+  import pandas as pd
+
+  licensedata = pd.read_csv(r"C:\Users\inesv\Documents\MADE\data\airbnb\listings.csv")
+
+  # Replace 'license_column_name' with the actual name of the column containing license information
+  licensesissued = licensedata['license'].nunique()
+
+  print("Number of different licenses issued:", licensesissued)
+  </code></pre></div>
+  <br>
+  <h2>Conclusion</h2>
+  <p>The analysis reveals key insights regarding Airbnb's impact in Amsterdam. We assessed tourist tax revenue, with Airbnb contributing 2.9 million euros and hotels generating 2.1 million euros. We identified the "De Baarsjes - Oud West" neighborhood as a prominent Airbnb hub and pinpointed high-density coordinates near Buiksloterweg. We also explored the potential use of Airbnb for permanent housing, detecting 36 vacant listings and a 20,000-unit discrepancy. Lastly, we analyzed 7,288 unique Airbnb listings. These findings offer a concise overview of Amsterdam's dynamic relationship with Airbnb and its implications.</p>
+  <br>
+  <h2>References</h2>
+  <p>De Boer, J. (2022, September 13). <i>Prijs van hotelkamer in Nederland in 2022 gemiddeld 125 euro. Business Insider Nederland.</i> Retrieved September 27, 2023, from https://www.businessinsider.nl/prijzen-nederlandse-hotelkamers-2022-125-euro/</p>
+  <p>Gemeente Amsterdam. (2023). <i>Toeristenbelasting.</i> amsterdam.nl. Retrieved September 27, 2023, from https://www.amsterdam.nl/veelgevraagd/toeristenbelasting-2c7c2#</p>
+  <p>Verstegen, G. J. (2019, May 14). <i>Amsterdam een van de duurste Airbnb-steden ter wereld.</i> RTL Nieuws. Retrieved September 27, 2023, from https://www.rtlnieuws.nl/economie/artikel/4711391/amsterdam-een-van-duurste-airbnb-steden-wereld#:~:text=Een%20nachtje%20Airbnb%20kost%20gemiddeld,lijst%20met%20duurste%20Airbnb%2Dsteden.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>©2023. Inés van der Klip, Milo Marler, and Yannick Aliet. All rights reserved</p>
+</div>
+
+</body>
+</html>
