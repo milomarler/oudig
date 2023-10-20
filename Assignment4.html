@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 3</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: url('Background_landingpage.jpg') center center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+.header a {
+  display: block;
+  height: 100%; /* Ensure the anchor fills the entire header */
+  width: 100%;
+  text-decoration: none; /* Remove underline on the anchor text */
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #fdd835;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  display: flex; /* Center the navigation links horizontally */
+  justify-content: center; /* Center the links horizontally */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ffeb3b;
+  color: white;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #fbc02d;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  margin: 0 150px; /* Add margin to the left and right sides */
+}
+
+/* Fake image, just for this example */
+.full-width-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-width-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.code-container {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Background color for the code block */
+    border-radius: 10px; /* Rounded corners */
+    width: 100%; /* Full width of the webpage */
+    overflow-x: auto; /* Enable horizontal scroll bar */
+}
+    
+/* Footer */
+.footer {
+  padding: 1.5px; /* Decrease the padding to make it smaller */
+  text-align: center;
+  background-color: #fdd835;
+  color: white;
+  font-size: 7px; /* Decrease the font size to make it smaller */
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html">
+  <h1>Amsterdam Paralympics 2024</h1>
+ <p>DATA 1 assignments conceived and developed by <b>Group 12</b>.</p>
+</div>
+
+<div class="navbar">
+  <a href="AboutUs.html">About Us</a>
+  <a href="Assignment1.html">Assignment 1</a>
+  <a href="Assignment2.html">Assignment 2</a>
+  <a href="Assignment3.html">Assignment 3</a>
+  <a href="Assignment4.html"class="active"><b>Assignment 4</b></a>
+</div>
+
+<div class="row">
+  <div class="main">
+  <h1>Transport</h1>
+  <h2>Municipal Brief</h2>
+  <p><i>The Municipality wants you to find a location for the Event Headquarters. They decided it would be best if this E.H. is as close to the centre of the swimming route. There is a bit of a concern for the after party and the stream of visitors. They want you to quantify the number of visitors that can reach the event and the capacity for festivities after the event.</i></p>
+  <br>
+  <h2>Proposed swimming route</h2>
+  <p>Our proposed swimming route navigates through de Jordaan, commencing at Brouwersgracht and progressing along Lijnbaansgracht and Marnixstraat, concluding at Looiersgracht before returning to the starting point. The entire route spans just over 5 kilometers, with minimal impact on commercial and canal boat routes.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.0
+  # Our route through the Jordaan
+
+  import folium
+
+  # I created a map located around the Jordaan in Amsterdam
+  m = folium.Map(location=[52.375073, 4.882201], zoom_start=15)
+
+  # Here I created a lot of markers along the route with popups (names)
+  marker = folium.Marker(location=[52.380683, 4.888178], popup="Start")
+  marker.add_to(m)
+
+  marker = folium.Marker(location=[52.383634, 4.882914], popup="1")
+  marker.add_to(m)
+
+  marker = folium.Marker(location=[52.383462, 4.882933], popup="10")
+  marker.add_to(m)
+
+  marker = folium.Marker(location=[52.380583, 4.888138], popup="End")
+  marker.add_to(m)
+
+  # This is the list of coordinates along the route
+  point_coordinates = [
+      [52.380683, 4.888178],
+      [52.383634, 4.882914],
+      [52.383462, 4.882933],
+      [52.380583, 4.888138]
+  ]
+
+  # I created a polyline to show the route
+  line = folium.PolyLine(locations=point_coordinates, color="red", weight=1)
+
+  # And added it to the map
+  line.add_to(m)
+
+  m
+  </code></pre></div>
+  <br>
+  <img src="Transport_1.png" alt="Proposed swimming route" class="full-width-image">
+  <br>
+  <h2>Centre of the swimming route</h2>
+  <p>Identifying the central point of our proposed swimming route, we've pinpointed it at the end of Looiersgracht. This specific location, home to Looierssluis, will serve as our Event Headquarters and will be secured accordingly.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.2
+
+  import folium
+  from geopy.distance import great_circle
+
+  # I created a map located around the Jordaan in Amsterdam (again)
+  m = folium.Map(location=[52.375073, 4.882201], zoom_start=15)
+
+  # List of coordinates along the route
+  point_coordinates = [
+      [52.380683, 4.888178],
+      [52.383634, 4.882914],
+      [52.383462, 4.882933],
+      [52.380583, 4.888138]
+  ]
+
+  # I calculated the total distance of the route
+  total_distance = 0
+  for i in range(1, len(point_coordinates)):
+      total_distance += great_circle(point_coordinates[i-1], point_coordinates[i]).kilometers
+
+  # Then I calculated the halfway distance
+  halfway_distance = total_distance / 2
+
+  # And found the halfway point
+  accumulated_distance = 0
+  i = 0
+
+  while accumulated_distance < halfway_distance:
+      accumulated_distance += great_circle(point_coordinates[i], point_coordinates[i+1]).kilometers
+      i += 1
+
+  point_1 = (point_coordinates[i][0] + point_coordinates[i+1][0]) / 2
+  point_2 = (point_coordinates[i][1] + point_coordinates[i+1][1]) / 2
+  halfway_point = [point_1, point_2]
+
+  # I added a marker for the halfway point
+  folium.Marker(location=halfway_point, popup="Halfway Point").add_to(m)
+
+  # And plotted the map
+  m
+  </code></pre></div>
+  <br>
+  <img src="Transport_3.png" alt="Centre of swimming route" class="full-width-image">
+  <br>
+  <h2>The closest bus and tram stops at the start and finish of the swimming route</h2>
+  <p>The visualization depicts all public transport stations in the vicinity of the finish line. It's worth noting that while trams and metros are accounted for in the available data, information regarding busroutes is regrettably unavailable.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.3
+    
+  import folium
+  import overpy
+
+  #I will plot the different public transport stations in the area below.
+  api = overpy.Overpass()
+  query = """
+    node["railway"="tram_stop"](around:700, 52.380932, 4.887500); 
+    node["highway"="bus_stop"](around:700, 52.380932, 4.887500); 
+    out center;
+  """
+  result = api.query(query)
+
+  #creating map of Amsterdam
+  m = folium.Map(location=[52.379189, 4.899431], zoom_start=15)
+
+  # add marker for each station
+  for node in result.nodes:
+      stop_name = node.tags.get('name', 'Unknown')
+      lat, lon = node.lat, node.lon
+      folium.Marker(location=[lat, lon], popup=stop_name).add_to(m)
+
+  m
+  </code></pre></div>
+  <br>
+  <img src="Transport_4.jpeg" alt="Closest bus and tram stops" class="full-width-image">
+  <br>
+  <h2>The bus and tram lines, and their routes</h2>
+  <p>The assessment considers the proximity of tram and bus stops, with trams accommodating up to 185 passengers (factoring in a 15-passenger comfort reduction) and buses with a capacity of 60 (adjusting for a 10-passenger comfort reduction). Tram services run six times per hour, while buses operate ten times hourly, collectively offering a capacity of 7,080 individuals per hour. Notably, the Marnixplein station, closest to the finish line, emerges as a central transportation hub.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.3
+    
+  import requests
+  from geopy.distance import geodesic
+  import folium
+
+  # Define the query to search for tram and metro stations with Overpass API
+  overpass_url = "https://overpass-api.de/api/interpreter"
+
+  overpass_query = """
+  [out:json];
+  (
+    node["railway"="tram_stop"](around:700, 52.380932, 4.887500); 
+    node["railway"="subway_entrance"](around:700, 52.380932, 4.887500); 
+  );
+  out center;
+  """
+
+  # Send the query to the Overpass API to get the tram and metro station data
+  response = requests.get(overpass_url, params={"data": overpass_query})
+
+  if response.status_code == 200:
+      data = response.json()
+
+      # Finish point coordinates
+      finish_point = (52.375073, 4.882201)
+
+      closest_station = None
+      closest_distance = float('inf')  # Initialize with a large value
+
+      # Iterate through the station data and find the closest station
+      for element in data['elements']:
+          if 'lat' in element and 'lon' in element:
+              station_location = (element['lat'], element['lon'])
+              distance = geodesic(finish_point, station_location).meters
+
+              if distance < closest_distance:
+                  closest_station = element
+                  closest_distance = distance
+
+      if closest_station:
+          closest_station_name = closest_station.get('tags', {}).get('name', 'Unknown')
+          print(f"Closest station: {closest_station_name}")
+          print(f"Distance to closest station: {closest_distance} meters")
+
+          # Create a map centered at the finish point
+          m = folium.Map(location=finish_point, zoom_start=15)
+
+          # Add a marker for the closest station
+          folium.Marker(
+              location=station_location,
+              popup=closest_station_name,
+              icon=folium.Icon(color='red')
+          ).add_to(m)
+  m
+  </code></pre></div>
+  <br>
+  <img src="Transport_5.jpeg" alt="Closest tramstop" class="full-width-image">
+  <p>The nearest tram line is tram 5, as depicted below. While this may be the closest tramline, it's advisable to evaluate other stations and their accessibility when choosing a suitable starting and finishing point.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.3
+    
+  import folium
+  import overpy
+
+  #I need an overpy api for this as well
+  api = overpy.Overpass()
+
+  #Overpass query for relating tram 5 with amsterdam
+  query = """
+    relation["type"="route"]["route"="tram"]["ref"="5"];
+    (._; >;);
+    out body;
+  """
+
+  #need to send this result to the query
+  result = api.query(query)
+
+  #making map of amsterdam
+  m = folium.Map(location=[52.379189, 4.899431], zoom_start=13)
+
+  #plotting tramline 5 
+  for way in result.ways:
+      coordinates = [(node.lat, node.lon) for node in way.nodes]
+      folium.PolyLine(locations=coordinates, color="blue", weight=3).add_to(m)
+
+  m
+  </code></pre></div>
+  <img src="Transport_6.jpeg" alt="Tramline 8" class="full-width-image">
+  <br>
+  <h2>Centrality of swimming route</h2>
+  <p>Closeness centrality was selected as the most suitable metric. In essence, it quantifies how closely a node is connected to others indirectly, with more central nodes requiring shorter paths to access the network. On the other hand, betweenness centrality identifies nodes that act as crucial intermediaries among various network nodes (AxU Platform, 2021).<br>Concerning the outcomes, we find the closeness centrality results intriguing but somewhat unconventional, given that our chosen finish point coincides with the network's starting point.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.4
+    
+  import osmnx as ox
+  import networkx as nx
+  import folium
+
+  #this gets all the data from Amsterdam
+  walk = ox.graph_from_place('Amsterdam, Netherlands', network_type='walk')
+
+  #start, middle, and end coordinates
+  node_start = (52.380683, 4.888178)
+  node_middle = (52.368711, 4.882149)
+  node_finish = (52.380583, 4.888138)
+
+  #Plot graph
+  bbox = ox.utils_geo.bbox_from_point(node_middle, dist=2000)
+  fig, ax = ox.plot_graph(walk, bbox=bbox, show=False, close=False)
+  ax.scatter(node_middle[0], node_middle[1], c='red') 
+
+  #calculate centrality
+  nodes_start = ox.distance.nearest_nodes(walk, node_start[0], node_start[1], return_dist=True)
+  nodes_middle = ox.distance.nearest_nodes(walk, node_middle[0], node_middle[1], return_dist=True)
+  nodes_finish = ox.distance.nearest_nodes(walk, node_finish[0], node_finish[1], return_dist=True)
+
+  start_centrality = nx.closeness_centrality(walk, u=nodes_start[0])
+  middle_centrality = nx.closeness_centrality(walk, u=nodes_middle[0])
+  end_centrality = nx.closeness_centrality(walk, u=nodes_finish[0])
+
+  #Folium map
+  map_center = (node_middle[0], node_middle[1])
+  m = folium.Map(location=map_center, zoom_start=15)
+
+  #markers for the start, middle, and end nodes with centrality values
+  folium.Marker(node_start, icon=folium.Icon(color='blue'), popup=f'Start Centrality: {start_centrality}').add_to(m)
+  folium.Marker(node_middle, icon=folium.Icon(color='red'), popup=f'Middle Centrality: {middle_centrality}').add_to(m)
+  folium.Marker(node_finish, icon=folium.Icon(color='green'), popup=f'End Centrality: {end_centrality}').add_to(m)
+
+  #print
+  print('The centrality of the start point is', start_centrality)
+  print('The centrality of the middle point is', middle_centrality)
+  print('The centrality of the end point is', end_centrality)
+  m
+  </code></pre></div>
+  <img src="Transport_7.jpeg" alt="Centrality" class="full-width-image">
+  <br>
+  <h2>All cafes, restaurants near the finish line</h2>
+  <p>The map shows restaurants and cafes within a 700-meter walking distance. This distance, while it might seem conservative considering one can cover more ground in about 10 minutes, was intentional. It stems from the challenge of accurately accounting for street layouts and accessibility. Opting for a 700-meter radius acknowledges that certain places may be less straightforward to reach.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 4.5
+    
+  import requests
+  import folium
+
+  #I need to use the overpass api for these codes
+  overpass_url = "https://overpass-api.de/api/interpreter"
+
+  overpass_query = """
+  [out:json];
+  (
+    node(around:700, 52.380932, 4.887500); 
+    way(around:700, 52.380932, 4.887500);
+    rel(around:700, 52.380932, 4.887500);
+  );
+  out center;
+  """
+
+  #sending the query to the Overpass API to get the data
+  response = requests.get(overpass_url, params={"data": overpass_query})
+
+  if response.status_code == 200:
+      data = response.json()
+
+      # creating a map on coordinates of finish line
+      m = folium.Map(location=[52.380932, 4.887500], zoom_start=15)
+
+      # markers for cafes and restaurants
+      cafe_markers = folium.FeatureGroup(name='Cafes')
+      restaurant_markers = folium.FeatureGroup(name='Restaurants')
+
+      # blue markers for cafes/bars and green for restaurants.
+      for element in data['elements']:
+          if 'tags' in element:
+              tags = element['tags']
+              if 'amenity' in tags:
+                  amenity = tags['amenity']
+                  if amenity in ['cafe', 'bar']:
+                      location = (element.get('lat'), element.get('lon'))
+                      popup = tags.get('name', 'Cafe/Bar')
+                      icon_color = 'blue'
+                      if None not in location:
+                          cafe_markers.add_child(folium.Marker(
+                              location=location,
+                              popup=popup,
+                              icon=folium.Icon(color=icon_color)
+                          ))
+                  elif amenity == 'restaurant':
+                      location = (element.get('lat'), element.get('lon'))
+                      popup = tags.get('name', 'Restaurant')
+                      icon_color = 'green'
+                      if None not in location:
+                          restaurant_markers.add_child(folium.Marker(
+                              location=location,
+                              popup=popup,
+                              icon=folium.Icon(color=icon_color)
+                          ))
+
+      #putting the markers on the map
+      m.add_child(cafe_markers)
+      m.add_child(restaurant_markers)
+
+      #I added layers as an extra to see where the cafe's and restaurants are
+      folium.LayerControl().add_to(m)
+
+   # amount of cafes and restaurants
+      print(f"Number of cafes: {cafe_count}")
+      print(f"Number of restaurants: {restaurant_count}")
+  #limit: I don't think the roads are taken into account. so places are in the range of 700 meters.
+  m
+  </code></pre></div>
+  <img src="Transport_9.jpeg" alt="Closest cafes and restaurants zoomed in" class="full-width-image">
+  <br>
+  <h2>Conclusion</h2>
+  <p>Our proposed route in de Jordaan spans just over 5 kilometers and minimally impacts commercial and canal boat routes. Looierssluis is selected as the central Event Headquarters. Tram and metro stations are accessible, although bus route data is lacking. Trams carry 185 passengers, while buses accommodate 60, resulting in a combined hourly capacity of 7,080 passengers. Closeness centrality metrics revealed unique results, attributed to the chosen start and finish point. A 700-meter radius is used to map nearby restaurants and cafes, balancing accessibility and coverage challenges.</p>
+  <br>
+  <h2>References</h2>
+  <p>AxU Platform. (2021, December 15). <i>Centrality Analysis.</i> Medium. Retrieved October 18, 2023, from https://axuplatform.medium.com/centrality-analysis-832ae76a6eca</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>©2023. Inés van der Klip, Milo Marler, and Yannick Aliet. All rights reserved</p>
+</div>
+
+</body>
+</html>
