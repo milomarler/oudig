@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: url('Background_landingpage.jpg') center center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+.header a {
+  display: block;
+  height: 100%; /* Ensure the anchor fills the entire header */
+  width: 100%;
+  text-decoration: none; /* Remove underline on the anchor text */
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #fdd835;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  display: flex; /* Center the navigation links horizontally */
+  justify-content: center; /* Center the links horizontally */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ffeb3b;
+  color: white;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #fbc02d;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  margin: 0 150px; /* Add margin to the left and right sides */
+}
+
+/* Fake image, just for this example */
+.full-width-image {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-width-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.code-container {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Background color for the code block */
+    border-radius: 10px; /* Rounded corners */
+    width: 100%; /* Full width of the webpage */
+    overflow-x: auto; /* Enable horizontal scroll bar */
+}
+    
+/* Footer */
+.footer {
+  padding: 1.5px; /* Decrease the padding to make it smaller */
+  text-align: center;
+  background-color: #fdd835;
+  color: white;
+  font-size: 7px; /* Decrease the font size to make it smaller */
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html">
+  <h1>Amsterdam Paralympics 2024</h1>
+  <p>DATA 1 assignments conceived and developed by <b>Group 12</b>.</p>
+</div>
+
+<div class="navbar">
+  <a href="AboutUs.html">About Us</a>
+  <a href="Assignment1.html">Assignment 1</a>
+  <a href="Assignment2.html"class="active"><b>Assignment 2</b></a>
+  <a href="Assignment3.html">Assignment 3</a>
+  <a href="Assignment4.html">Assignment 4</a>
+</div>
+
+<div class="row">
+  <div class="main">
+  <h1>Energy</h1>
+  <h2>Municipal Brief</h2>
+  <p><i>The Municipality is worried that the canal- and support boats might pollute the air with their diesel engines. Since the Municipality wants to create ideal conditions for the swimmers so they can set records (always nice for PR), it is your task to figure out if their concern is warranted and what should or could be done to improve conditions. Next to that, Amsterdam wants to advertise this event as a Neutral Energy Event©™® (NEE).</i></p>
+  <br>
+  <h2>Type of canal boats</h2>
+  <p>According to Reuters (2020), the number of commercial canal boats in Amsterdam reached as high as 550. Of these, 75% were electric canal boats, totaling 410. Therefore, in that year, there were 140 canal boats that were powered by fossil fuels, which are intended to be converted into electric boats before 2025.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 2.1
+
+  amount_canal_boats = 550
+  electric_percentage = 75
+  electric_boats = int((electric_percentage / 100) * total_canal_boats)
+  fossil_fuel_boats = total_canal_boats - electric_boats
+
+  print(f"Number of electric canal boats: {electric_boats}")
+  print(f"Number of canal boats powered by fossil fuels: {fossil_fuel_boats}")
+  </code></pre></div>
+  <br>
+  <h2>Peak times canal boats</h2>
+  <div class="image-container">
+        <img src="Energy_1.PNG" alt="Peak boat hours per day" class="half-width-image">
+        <img src="Energy_2.PNG" alt="Peak times canal boats" class="half-width-image">
+    </div>
+  <p>The graphs above illustrate the fluctuation of time spent on boats throughout the day in Amsterdam between the months of July and August from 2019 to 2022 (Commissie Mobiliteit, Openbare Ruimte en Water, 2023). As you can see, most boat activity occurs during the afternoon, with the number of boat hours consistently exceeding 80 between 12:00 and 18:00. The highest number of boat hours is reached at 16:00.</p>
+  <br>
+  <h2>Energy use canal boats in relation to public transport</h2>
+  <p>Most canal boats that aren't electrified use diesel motors with a power of 50 hp (Waterrecreatie Advies BV, 2012), equivalent to 37 kW. The average tour time is 75 minutes, resulting in an energy consumption of 45 kWh per trip. When calculating the energy consumption per passenger-kilometer, it amounts to 0.075 kWh with a capacity of 80 persons.<br>Blue Boat Company operates electric canal boats that consume 22 kW of power in 75 minutes, totaling 27.5 kWh per trip (Waterrecreatie Advies BV, 2013). These boats can accommodate up to 80 people and have a maximum speed of 6 km/h, resulting in a total trip length of 7.5 km in 75 minutes. The energy consumption per passenger-kilometer is 0.046 kWh at full capacity.</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 2.3
+
+  #  General information boat trips
+  trip_length = 7.5
+  trip_capacity = 80
+
+  # Energy usage per boat type
+  diesel_boat_kwh = 45
+  electric_boat_kwh = 27.5
+
+  # Calculation energy usage per km
+  diesel_energy_per_passenger_km = diesel_energy_consumption_kwh / (trip_capacity_persons * trip_length_km)
+  electric_energy_per_passenger_km = electric_energy_consumption_kwh / (trip_capacity_persons * trip_length_km)
+
+  print("Energy consumption per passenger-kilometer for diesel canal boats: {:.3f} kWh".format(diesel_energy_per_passenger_km))
+  print("Energy consumption per passenger-kilometer for electric canal boats: {:.3f} kWh".format(electric_energy_per_passenger_km))
+  </code></pre></div>
+  <p>The table below displays the energy consumption per passenger-kilometer of public transport in Amsterdam, based on GVB data from 2021. Comparing this data to electric and diesel canal boats, it's evident that electric canal boats are the most efficient.</p>
+  <img src="Energy_3.PNG" alt="Energy usage GVB" class="full-width-image">
+  <br>
+  <h2>Economical feasibility</h2>
+  <p>According to Reuters (2020), it costs 1.1 million euros to build a new electric canal boat. Building 140 new electric canal boats would amount to 154 million euros. This is a substantial investment. However, transforming existing canal boats into electric ones costs significantly less, approximately 50,000 euros. Transforming all 140 fossil-powered boats would result in an investment of 7 million euros. Furthermore, with policies that will require boats to be electric by 2025, these costs can be imposed on canal boat owners.</p>
+  <br>
+  <h2>Quantity support boats and vehicles</h2>
+  <p>The number of support boats for the Paralympics open swimming event in Amsterdam depends on all types of factors. The Lektocht, an open water swimming contest in Culemborg with 400 swimmers, 24 lifeboats were deployed for a 6 km race (Van Schaik, 2022). For the 5 km Paralympics event in Amsterdam, fewer boats than the Lektocht seem appropriate due to the shorter distance. Given Amsterdam's narrow canals, support boats might not be needed, aligning with FINA (2022) guidelines for races under 10 km or circuit courses. Exact boat numbers depend on event specifics. The municipality must also manage increased traffic flows from the Paralympics, including access for vehicles, personnel, and support crews.</p>
+  <br>
+  <h2>Quantity solar panels and wind turbines</h2>
+  <p>Canal boats are Amsterdam's most popular tourist attraction. As mentioned earlier, an electric canal boat uses 22 kW per 75 minutes, which equals 17.6 kW every hour. According to Reuters, the average canal boat is in operation for up to 14 hours per day, amounting to 246.4 kWh. With 500 canal boats in Amsterdam, this totals 123,200 kWh per day or 45 MWh annually.<br>To calculate the number of solar panels needed, divide the total annual energy consumption by the conversion factor (0.85), resulting in 53 MWp (watt-peak). The average wattage for solar panels is 260 Wp, requiring 20,345 solar panels. Each solar panel needs 1.5 m^2 of space, so a total of 305,213 m^2 is required for all the canal boats (Solvari, 2023).</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 2.6
+
+  #  General information energy boats
+  total_energy_boats_kWh = 44968000
+  conversion_factor = 0.85
+  wattage_solarpanel = 260
+  area_solarpanel = 1.5
+
+  # Calculations
+  conversion = total_energy_boats_kWh / conversion_factor
+  amount_solarpanels = conversion / wattage_solarpanel
+  area_solarpanels = total_amount_solarpanels * area_solarpanel
+
+  print(f"Number of solar panels needed: {amount_solarpanels}")
+  print(f"Area of solar panels needed: {area_solarpanels}")
+  </code></pre></div>
+  <p>According to the European Wind Energy Association, an average on-shore wind turbine can produce more than 6 MWh annually. Dividing the energy needed to power 500 electric canal boats by the output of one wind turbine yields 7.5, indicating that 8 wind turbines are required to power all of Amsterdam's canal boats (The European Wind Energy Association, n.d.).</p>
+  <div class="code-container"><pre><code class="python">
+  # Question 2.6
+
+  #  General information energy boats
+  total_energy_boats_kWh = 44968000
+  output_windturbine = 6000000
+
+  # Calculations
+  amount_windturbines = total_energy_boats_kWh / output_windturbine
+
+  print(f"Number of wind turbines needed: {amount_windturbines}")
+  </code></pre></div>
+  <br>
+  <h2>Available facilities</h2>
+  <p>The installation of 300,000 m2 of solar panels would necessitate a substantial amount of rooftop or ground space. While many cities have rooftop solar programs, available space on rooftops may be limited. Ground-mounted solar panels could demand a significant amount of land, which might not be readily available within the city limits. Additionally, local regulations and policies concerning land use, environmental impact, and historical preservation may significantly influence the feasibility of such a project.<br>Wind turbines require a significant amount of space, not only for the turbines themselves but also for safety and operational reasons. Proper spacing is essential to prevent interference and comply with safety regulations. The feasibility of installing 8 wind turbines would rely on the turbine size and the availability of land or designated areas for wind energy generation. Local zoning regulations, environmental impact assessments, and community support will play a vital role in determining feasibility.</p>
+  <br>
+  <h2>Water quality and canal boats</h2>
+  <p>The Covid-19 pandemic brought clearer waters to Venice's canals, attributed to reduced boat traffic. However, the improved water clarity was due to sediments settling, not cleaner water. Notably, air quality improved during this time (Clifford, 2020). Consequently, transitioning to cleaner, electrically powered canal boats in Amsterdam may not necessarily enhance water quality but can significantly boost air quality. </p>
+  <br>
+  <h2>Conclusion</h2>
+  <p>Addressing air pollution concerns from canal and support boats is crucial for an environmentally friendly and successful Paralympics event in Amsterdam. Transitioning to electric canal boats is cost-effective, with the option to retrofit existing boats. Looking at peak boat activity hours, it can be said that organizing the event during the morning will be the best way to have the least amount of impact on canal boat routes. However, the installation of solar panels and wind turbines may face challenges due to space limitations, regulatory requirements, and environmental considerations. Regarding water quality, data suggests that adopting electric boats can enhance air quality, although it may not significantly affect water quality.</p>
+  <br>
+  <h2>Reccomendations</h2>
+  <p>The available data for evaluating the feasibility of organizing a Neutral Energy Swimming Event was very limited. To address these limitations and make informed decisions, the municipality should consider conducting more extensive research. This research should include, at a minimum, implementing a comprehensive system for tracking the quantity and types of boats entering Amsterdam to gain a better understanding of the boat composition in Amsterdam, making more detailed calculations to determine the energy usage of gas boats and electric boats rather than relying on generalized values, clearly determining the type of support required to organize an event like the Paralympics, and conducting a more comprehensive assessment of the environmental impact. By doing so, the municipality can make more informed and sustainable decisions regarding canal and support boats.</p>
+  <br>
+  <h2>References</h2>
+  <p>Blue Boat Company. (2023, June 20). <i>Maatwerk.</i> Retrieved September 20, 2023, from https://www.blueboat.nl/maatwerk/</p>
+  <p>Clifford, C. (2020, March 19). The water in Venice, Italy’s canals is running clear amid the COVID-19 lockdown — take a look. <i>CNBC.</i> https://www.cnbc.com/2020/03/18/photos-water-in-venice-italys-canals-clear-amid-covid-19-lockdown.html</p>
+  <p>Commissie Mobiliteit, Openbare Ruimte en Water. (2023). Grachtenmonitor 2022. In <i>Openresearch.Amsterdam.</i> Gemeente Amsterdam. Retrieved September 20, 2023, from https://openresearch.amsterdam/nl/page/92981/grachtenmonitor-2022</p>
+  <p>Fédération Internationale de Natation. (2022). <i>Open WaterSwimming Guide.</i> Retrieved September 20, 2023, from https://resources.fina.org/fina/document/2022/03/14/357ae477-02a3-44ad-bdf6-0668c3fc7d39/OWS-Guide_2022_Final.pdf</p>
+  <p>GVB. (2021). <i>Jaarverslag 2020.</i> Retrieved September 20, 2023, from https://jaarverslag.gvb.nl/pdfondemand/printpdf?docId=273392&nodes=273575</p>
+  <p>Solvari. (2023, April 11). <i>Zonnepanelen berekenen.</i> Zonne-paneel.net. Retrieved September 20, 2023, from https://www.zonne-paneel.net/zonnepanelen-berekenen/#:~:text=Je%20berekent%20het%20aantal%20zonnepanelen,16%20x%20260%20%3D%204117</p>
+  <p>Sterling, T. (2020, March 7). Amsterdam’s boats go electric ahead of 2025 diesel ban. <i>Reuters.</i> Retrieved September 20, 2023, from https://www.reuters.com/article/us-climate-change-netherlands-idUSKBN20Q1W7</p>
+  <p>The European Wind Energy Association. (n.d.). <i>Wind energy frequently asked questions.</i> EWEA. Retrieved September 20, 2023, from https://www.ewea.org/wind-energy-basics/faq/#:~:text=The%20output%20of%20a%20wind,average%20EU%20households%20with%20electricity.</p>
+  <p>Van Schaik, B. (2022, July 10). <i>Vooral ‘oude garde’ in Lektocht: ‘Die zwemmen liever in een rivier dan in een stinkende gracht.’</i> De Geldelander. Retrieved September 20, 2023, from https://www.gelderlander.nl/culemborg/vooral-oude-garde-in-lektocht-die-zwemmen-liever-in-een-rivier-dan-in-een-stinkende-gracht~aaa778f6/?referrer=https%3A%2F%2Fwww.google.com%2F</p>
+  <p>Waterrecreatie Advies BV. (2012). <i>Rondvaart en recreatievaart in Amsterdam.</i> Retrieved September 20, 2023, from https://www.waterrecreatieadvies.nl/assets/files/Rondvaart%20en%20recreatievaart%20in%20Amsterdam-compressed.pdf</p>
+  <p>Waterrecreatie Advies BV. (2013). <i>Elektrisch varen in de Amsterdamse rondvaart.</i> Retrieved September 20, 2023, from https://www.waterrecreatieadvies.nl/assets/files/Elektrisch%20varen%20in%20de%20Amsterdamse%20rondvaart%20-%20compressed.pdf</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>©2023. Inés van der Klip, Milo Marler, and Yannick Aliet. All rights reserved</p>
+</div>
+
+</body>
+</html>
