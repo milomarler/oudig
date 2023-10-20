@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: url('Background_landingpage.jpg') center center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+.header a {
+  display: block;
+  height: 100%; /* Ensure the anchor fills the entire header */
+  width: 100%;
+  text-decoration: none; /* Remove underline on the anchor text */
+  color: inherit; /* Inherit the color from the parent element */
+}
+  
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #fdd835;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  display: flex; /* Center the navigation links horizontally */
+  justify-content: center; /* Center the links horizontally */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ffeb3b;
+  color: white;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #fbc02d;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  margin: 0 150px; /* Add margin to the left and right sides */
+}
+
+/* Images */
+.full-width-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Footer */
+.footer {
+  padding: 1.5px; /* Decrease the padding to make it smaller */
+  text-align: center;
+  background-color: #fdd835;
+  color: white;
+  font-size: 7px; /* Decrease the font size to make it smaller */
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html">
+  <h1>Amsterdam Paralympics 2024</h1>
+  <p>DATA 1 assignments conceived and developed by <b>Group 12</b>.</p>
+</div>
+
+<div class="navbar">
+  <a href="AboutUs.html">About Us</a>
+  <a href="Assignment1.html"class="active"><b>Assignment 1</b></a>
+  <a href="Assignment2.html">Assignment 2</a>
+  <a href="Assignment3.html">Assignment 3</a>
+  <a href="Assignment4.html">Assignment 4</a>
+</div>
+
+<div class="main">
+  <h1>Water</h1>
+  <h2>Municipal Brief</h2>
+  <p><i>Paris is hosting the Paralympics in 2024. One of the events at the Paralympics is an open water swimming event in the Seine (apparently the water is clean or so the French say). Since the City of Amsterdam thinks it is beter than Paris, they want to host an event before the Paralympics, snubbing the Parisians. The idea is to host a 5km. open water swimming event through the canals of Amsterdam. You are asked by the municipality of Amsterdam to advise on the feasibility of the event from the perspective of the safety of the partaking athletes from an environmental perspective. The event is going to be hosted in May.</i></p>
+  <br>
+  <h2>Impact on commercial water transport</h2>
+  <img src="Water_1.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> Geopackage<br><b>Numerical:</b> Non-numerical<br><b>Python suitability:</b>  Yes, to read and write for this data type you can install Geopandas library along with Fiona and Shapely<br><b>Geometrical type geo-data:</b> Lines</p>
+  <p>This map shows all commercial water routes within the Netherlands. In Amsterdam, commercial routes inside the city center are limited. The data indicates that the canals within Het IJ, (around) the Prinsengracht, and the Amstel are not designated for commercial boat travel. This implies that within the center of Amsterdam, there is indeed the possibility of hosting a swimming event, without interfering with commercial boat routes.</p>
+  <h5>Data retrieved from: <a href="https://www.pdok.nl/introductie/-/article/vaarweg-informatie-nederland-vin-">PDOK</a></h5>
+  <br>
+  <h2>Impact on routes canal boats</h2>
+  <h3>Mooring, embarkation and disembarkation points for canal boats</h3>
+  <img src="Water_2.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> CSV<br><b>Numerical:</b> Non-numerical<br><b>Python suitability:</b>  Yes, you can use Jupyterlab for reading and writing CSV<br><b>Geometrical type geo-data:</b> Points</p>
+  <p>This map displays the locations for boarding and disembarking from canal boats. When examining the number of hop-on-hop-off locations, it becomes evident that organizing a swimming event within the Grachtengordel without significantly affecting canal boat usage will be quite challenging. But outside the Grachtengordel there could be room for such event.</p>
+  <h5>Data retrieved from: <a href="https://maps.amsterdam.nl/varen/">Gemeente Amsterdam</a></h5>
+  <h3>Canal boat routes</h3>
+  <img src="Water_3.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> Image<br><b>Numerical:</b> Non-numerical<br><b>Python suitability:</b>  No<br><b>Geometrical type geo-data:</b> Lines</p>
+  <p>This map presents the various routes taken by canal boats. Much like the map illustrating hop-on-hop-off locations, it becomes evident that arranging a swimming event within the Grachtengordel will pose significant challenges.</p>
+  <h5>Data retrieved from: <a href="https://ecoboatsamsterdam.com/vaarroute/">Eco Boats Amsterdam</a></h5>
+  <br>
+  <h2>Pollution levels canal water</h2>
+  <h3>Official swimming locations</h3>
+  <img src="Water_4.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> CSV<br><b>Numerical:</b> Non-numerical<br><b>Python suitability:</b>  Yes, you can use Jupyterlab for reading and writing CSV<br><b>Geometrical type geo-data:</b> Points</p>
+  <p>This map displays the official swimming locations in open water within the municipality of Amsterdam. Waternet, the water management company of the city, recommends using these designated spots for swimming due to various factors, such as heavy rainfall and water transparency, that should be considered when using unapproved locations (Source: Safe Swimming, n.d.). Given the lack of official swimming locations in the center of Amsterdam, further research is needed to determine their suitability for hosting an outdoor swimming event.</p>
+  <h5>Data retrieved from: <a href="https://maps.amsterdam.nl/zwemwater/">Gemeente Amsterdam</a></h5>
+  <h3>Peak precipitation</h3>
+  <img src="Water_5.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> Metadata<br><b>Numerical:</b> Non-numerical<br><b>Python suitability:</b>  No, metadata is data that provides information about other data, but not the content of the data itself.<br><b>Geometrical type geo-data:</b> Points</p>
+  <p>This map shows locations at a heightened risk of flooding, and as you can see the city center has a lot of locations that are at risk of flooding after heavy rainfall. In these areas, there's a greater probability of sewer overload, which can result in the discharge of polluted water from the sewage system into water bodies. These pollutants can have adverse health effects on swimmers. Therefore Waternet advises against swimming for three days after heavy rainfall (Safe Swimming, n.d.).</p>
+  <h5>Data retrieved from: <a href="https://www.klimaateffectatlas.nl/nl/waterdiepte-bij-kortdurende-hevige-neerslag">Klimaateffectatlas</a></h5>
+  <h3>Water transparency</h3>
+  <img src="Water_6.PNG" alt="Commercial water routes" class="full-width-image">
+  <p><b>Data type:</b> Unknown<br><b>Numerical:</b> Unknown<br><b>Python suitability:</b>  Unknown<br><b>Geometrical type geo-data:</b> Points</p>
+  <p>This map presents data on water transparency levels in Amsterdam. While this may not directly determine swim safety on its own, water transparency can serve as a critical indicator of swim safety. Clear water with high transparency is generally safer for swimming, as it allows swimmers to detect potential underwater hazards. On the other hand, Waternet advises not to swim in murky water (Safe Swimming, n.d.) , as this water can obscure these obstacles and may be more contaminated. A closer look at the map reveals that the water in the center of Amsterdam is generally quite transparent.</p>
+  <h5>Data retrieved from: <a href="https://www.agv.nl/onze-taken/schoon-water/waterkwaliteit/">AGV</a></h5>
+  <br>
+  <h2>Conclusion</h2>
+  <p>Our analysis suggests that hosting the proposed swimming event in Amsterdam's Grachtengordel area faces significant challenges due to the extensive canal boat routes and mooring points. An alternative, more suitable location is the Jordaan neighborhood, with fewer canal boat activities. Emphasizing water quality and safety, it's advisable to avoid hosting the event for at least three days after heavy rainfall, considering the risk of sewer overload and water contamination in the city center. On a positive note, water transparency in the city center aligns with safe swimming practices. In conclusion, the Jordaan neighborhood emerges as the most practical choice, requiring thorough coordination with authorities and safety assessments, particularly post-rainfall precautions, for a successful event.</p>
+  <br>
+  <h2>Reccomendations</h2>
+  <p>The absence of sufficient available and downloadable data, strongly underscores the need for thorough research before proceeding with the swimming event. To address this data gap, about water quality for example, it is highly advisable to conduct water quality assessments and tests in the heart of Amsterdam. This precautionary measure will help ensure the safety and suitability of the chosen location for participants, considering the potential health and safety risks associated with unapproved swimming spots and uncertain water conditions.</p>
+  <br>
+  <h2>References</h2>
+  <p>Eco Boats Amsterdam. (2023, January 17). <i>Vaarroutes Amsterdam - Kaart en Hotspots.</i> ecoboatsamsterdam.com. Retrieved September 13, 2023, from https://ecoboatsamsterdam.com/vaarroute/</p>
+  <p>Gemeente Amsterdam. (n.d.-a). <i>Op- en afstapplaatsen & ligplaatsen passagiersvaartuigen.</i> maps.amsterdam.nl. Retrieved September 13, 2023, from https://maps.amsterdam.nl/varen/</p>
+  <p>Gemeente Amsterdam. (n.d.-b). <i>Zwem- en speelwater.</i> maps.amsterdam.nl. Retrieved September 13, 2023, from https://maps.amsterdam.nl/zwemwater/</p>
+  <p>Klimaateffectatlas. (n.d.). <i>Waterdiepte bij kortdurende hevige neerslag.</i> klimaateffectatlas.nl. Retrieved September 13, 2023, from https://www.klimaateffectatlas.nl/nl/waterdiepte-bij-kortdurende-hevige-neerslag</p>
+  <p>PDOK. (n.d.). <i>Dataset: Vaarweg Netwerk Data Service (VNDS).</i> pdok.nl. Retrieved September 13, 2023, from https://www.pdok.nl/introductie/-/article/vaarweg-informatie-nederland-vin-</p>
+  <p>Waternet. (n.d.). <i>Safe swimming.</i> waternet.nl. Retrieved September 13, 2023, from https://www.waternet.nl/en/our-water/safe-swimming/</p>
+  <br>
+</div>
+
+<div class="footer">
+  <p>©2023. Inés van der Klip, Milo Marler, and Yannick Aliet. All rights reserved</p>
+</div>
+
+</body>
+</html>
