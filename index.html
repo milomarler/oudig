@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DATA 1 Group 12</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  text-align: center;
+  background: url('Background_landingpage.jpg') center center no-repeat;
+  background-size: cover;
+  color: white;
+  padding: 0; /* Remove padding */
+  margin: 0;
+  height: calc(100vh - 47px); /* Calculate the height to fill the remaining viewport height, accounting for the navbar and footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+  /* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #fdd835;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  display: flex; /* Center the navigation links horizontally */
+  justify-content: center; /* Center the links horizontally */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ffeb3b;
+  color: white;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #fbc02d;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  padding: 1.5px;
+  text-align: center;
+  background: #fe6d00;
+  font-size: 7px;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Amsterdam Paralympics 2024</h1>
+  <p>DATA 1 assignments conceived and developed by <b>Group 12</b>.</p>
+  <p>Here, you can learn more <b>about us</b>, explore our completed <b>assignments</b>, and access our <b>GitHub</b> page.</p>
+</div>
+
+<div class="navbar">
+  <a href="AboutUs.html">About Us</a>
+  <a href="Assignment1.html">Assignment 1</a>
+  <a href="Assignment2.html">Assignment 2</a>
+  <a href="Assignment3.html">Assignment 3</a>
+  <a href="Assignment4.html">Assignment 4</a>
+  <a href="https://github.com/milomarler/group12.git">Github</a>
+</div>
+
+</body>
+</html>
